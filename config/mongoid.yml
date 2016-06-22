@@ -1,0 +1,12 @@
+development:
+  clients:
+    default:
+      database: orders_dev
+      hosts:
+        - localhost:27017
+test:
+  clients:
+    default:
+      database: orders_test
+      hosts:
+        - localhost:27017

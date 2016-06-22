@@ -14,5 +14,6 @@ module Rorder
     end
 
     use Routes::HealthCheck
+    use Routes::Order
   end
 end
