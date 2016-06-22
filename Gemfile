@@ -9,5 +9,6 @@ gem 'mongoid', '~> 5.1.0'
 gem 'concurrent-ruby', require: 'concurrent'
 
 group :test do
+  gem 'rack-test'
   gem 'minitest-reporters'
 end
