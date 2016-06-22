@@ -1,4 +1,7 @@
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'rorder'
+$LOAD_PATH.unshift File.expand_path '../../lib', __FILE__
 
+require_relative '../config/setup'
 require 'minitest/autorun'
+require 'minitest/reporters'
+
+Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new

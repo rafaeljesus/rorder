@@ -5,7 +5,7 @@ module Rorder
     class Order
       include Mongoid::Document
 
-      field :amount, type: Integer
+      field :amount, type: Float
       field :status, type: String
 
       def self.create_async order
