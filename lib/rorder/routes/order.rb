@@ -1,16 +1,18 @@
 require 'rorder/models/order'
-require 'rorder/util/trace'
+require 'rorder/producer/trace'
+require 'rorder/producer/order'
 
 module Rorder
   module Routes
     class Order < Base
       create = -> do
         composite = Concurrent::Promise.zip(
-          Rorder::Util::Trace.ok(@payload),
-          Rorder::Models::Order.create_async(@payload)
+          Producer::Trace.ok(@payload),
+          Models::Order.create_async(@payload)
         ).execute.value!
 
         order = composite[1]
+        Producer::Order.created(order).execute
         json order
       end
 

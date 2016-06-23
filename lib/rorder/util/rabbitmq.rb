@@ -5,15 +5,12 @@ module Rorder
   module Util
     class Rabbitmq
       class << self
+        attr_reader :channel
+
         def start
           connection ||= Bunny.new
           connection.start
-          channel = connection.create_channel
-          @queue = channel.queue 'events', durable: true
-        end
-
-        def publish payload
-          @queue.publish payload.to_json
+          @channel = connection.create_channel
         end
       end
     end

@@ -3,6 +3,8 @@ require 'sinatra/json'
 
 require 'rorder/version'
 require 'rorder/util/rabbitmq'
+require 'rorder/producer/trace'
+require 'rorder/producer/order'
 require 'rorder/routes/index'
 
 module Rorder
@@ -14,7 +16,9 @@ module Rorder
       enable  :raise_errors
     end
 
-    Rorder::Util::Rabbitmq.start
+    Util::Rabbitmq.start
+    Producer::Trace.create_queue
+    Producer::Order.create_queue
 
     use Routes::HealthCheck
     use Routes::Order
