@@ -8,6 +8,7 @@ gem 'puma'
 gem 'mongoid', '~> 5.1.0'
 gem 'concurrent-ruby', require: 'concurrent'
 gem 'bunny'
+gem 'rake'
 
 group :test do
   gem 'rack-test'
