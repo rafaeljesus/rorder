@@ -1,41 +1,45 @@
-# Rorder
+## Rorder
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rorder`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![CircleCI](https://circleci.com/gh/rafaeljesus/rorder/tree/master.svg?style=svg)](https://circleci.com/gh/rafaeljesus/rorder/tree/master)
 
-TODO: Delete this and the text above, and describe your gem
+* Order API micro service
+* A minimal docker alpine container
+* Automatically pushes it to dockerhub if tests pass
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'rorder'
+```bash
+git clone https://github.com/rafaeljesus/rorder.git
+cd rorder
+bundle
 ```
 
-And then execute:
+## Running server
+To start the serve execute:
+```bash
+puma config.ru
+```
 
-    $ bundle
+## Docker
+This repository has automated image builds on hub.docker.com after successfully building and testing. See the `deployment` section of [circle.yml](circle.yml) for details on how this is done. Note that three environment variables need to be set on CircleCI for the deployment to work:
 
-Or install it yourself as:
+  * DOCKER_EMAIL - The email address associated with the user with push access to the Docker Hub repository
+  * DOCKER_USER - Docker Hub username
+  * DOCKER_PASS - Docker Hub password (these are all stored encrypted on CircleCI, and you can create a deployment user with limited permission on Docker Hub if you like)
 
-    $ gem install rorder
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+run:
+```
+$ docker-machine start default
+$ eval $(docker-machine env default)
+$ docker-compose up
+```
 
 ## Contributing
+- Fork it
+- Create your feature branch (`git checkout -b my-new-feature`)
+- Commit your changes (`git commit -am 'Add some feature'`)
+- Push to the branch (`git push origin my-new-feature`)
+- Create new Pull Request
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rorder.
+### Maintaners
 
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
+* [Rafael Jesus](https://github.com/rafaeljesus)

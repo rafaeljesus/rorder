@@ -1,0 +1,17 @@
+machine:
+  ruby:
+    version: 2.3.0
+  services:
+    - docker
+deployment:
+  master:
+    branch: master
+    commands:
+      - docker build -t rafaeljesus/rorder .
+      - docker login -e $DOCKERHUB_EMAIL -u $DOCKERHUB_USER -p $DOCKERHUB_PASS
+      - docker tag rafaeljesus/rorder rafaeljesus/rorder:master
+      - docker push rafaeljesus/rorder:master
+
+test:
+  override:
+    - bundle exec rake test
