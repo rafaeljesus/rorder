@@ -7,6 +7,7 @@ gem 'sinatra-json', require: 'sinatra/json'
 gem 'puma'
 gem 'mongoid', '~> 5.1.0'
 gem 'concurrent-ruby', require: 'concurrent'
+gem 'bunny'
 
 group :test do
   gem 'rack-test'
