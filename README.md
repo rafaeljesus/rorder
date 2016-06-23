@@ -2,7 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/rafaeljesus/rorder/tree/master.svg?style=svg)](https://circleci.com/gh/rafaeljesus/rorder/tree/master)
 
-* Order API micro service
+* Rorder is a sample sinatra micro service which may receives a order hook notification event from SAP, ERP like SAP or your Gateway Payment.
+It uses [rtrace](https://github.com/rafaeljesus/rtrace) to create custom event logs through rabbitmq
 * A minimal docker alpine container
 * Automatically pushes it to dockerhub if tests pass
 
