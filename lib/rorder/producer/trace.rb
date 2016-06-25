@@ -11,20 +11,12 @@ module Rorder
         end
 
         def ok payload
-          data = {
-            name: 'order_created',
-            status: 'ok',
-            payload: payload
-          }
+          data = {name: 'order_created', status: 'ok', payload: payload}
           publish data
         end
 
-        def fail payload
-          data = {
-            name: 'order_created',
-            status: 'fail',
-            payload: payload
-          }
+        def fail payload, error
+          data = {name: 'order_created', status: 'fail', payload: payload, error: error}
           publish data
         end
 
